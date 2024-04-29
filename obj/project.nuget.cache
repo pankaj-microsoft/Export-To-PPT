@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "nNjJlHECDAp3RFEVkw1lcnjWc5hwG4lOWS2TrbfkZ1e/fHjX2KDekSzgMuchvRDHV1jqMaqCTzsPTiS/NLZwaw==",
+  "success": true,
+  "projectFilePath": "/Users/pankaj/Documents/VivaGoalsV2/ExportToPPT/ExportToPPT.csproj",
+  "expectedPackageFiles": [
+    "/Users/pankaj/.nuget/packages/aspose.slides.net/24.2.0/aspose.slides.net.24.2.0.nupkg.sha512",
+    "/Users/pankaj/.nuget/packages/documentformat.openxml/3.0.2/documentformat.openxml.3.0.2.nupkg.sha512",
+    "/Users/pankaj/.nuget/packages/documentformat.openxml.framework/3.0.2/documentformat.openxml.framework.3.0.2.nupkg.sha512",
+    "/Users/pankaj/.nuget/packages/microsoft.netcore.platforms/2.0.0/microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "/Users/pankaj/.nuget/packages/microsoft.win32.systemevents/7.0.0/microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "/Users/pankaj/.nuget/packages/system.drawing.common/7.0.0/system.drawing.common.7.0.0.nupkg.sha512",
+    "/Users/pankaj/.nuget/packages/system.io.packaging/8.0.0/system.io.packaging.8.0.0.nupkg.sha512",
+    "/Users/pankaj/.nuget/packages/system.text.encoding.codepages/4.4.0/system.text.encoding.codepages.4.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
