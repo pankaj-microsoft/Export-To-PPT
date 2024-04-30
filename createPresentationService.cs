@@ -27,7 +27,7 @@ namespace CoreGoals
                 Random rnd = new Random();
 
                 goalsArray.Add(
-                    new Goal.GoalDetail(true, "Goal Name - " + i.ToString(), "Goal Owner - " + i.ToString(), (i + 1 * 10) + "K")
+                    new Goal.GoalDetail(false, "Goal Name - " + i.ToString(), "Goal Owner - " + i.ToString(), (i + 1 * 10) + "K")
                 );
             }
 
@@ -2791,6 +2791,8 @@ namespace CoreGoals
 
             A.TableRow tableRow2 = new A.TableRow() { Height = 781011L };
 
+            // ********************************* Code for creation of goal name cell (Goal - 1 -> Goal Name) Start *********************************
+
             A.TableCell tableCell4 = new A.TableCell();
 
             A.TextBody textBody1001 = new A.TextBody();
@@ -2849,14 +2851,14 @@ namespace CoreGoals
             A.Run run1001 = new A.Run();
 
             // ********************************* Custom Code Start *********************************
-            int fontSize1 = goalsArrayForSlide.ElementAt(0).isMainGoal ? 1300 : 1200;
-            bool isBold1 = goalsArrayForSlide.ElementAt(0).isMainGoal;
-            string fontName1 = goalsArrayForSlide.ElementAt(0).isMainGoal ? "Segoe UI Semibold" : "Segoe UI";
+            int fontSize1001 = goalsArrayForSlide.Count > 0 &&goalsArrayForSlide.ElementAt(0).isMainGoal ? 1300 : 1200;
+            bool isBold1001 = goalsArrayForSlide.Count > 0 &&goalsArrayForSlide.ElementAt(0).isMainGoal;
+            string fontName1001 = goalsArrayForSlide.Count > 0 &&goalsArrayForSlide.ElementAt(0).isMainGoal ? "Segoe UI Semibold" : "Segoe UI";
             // ********************************* Custom Code End *********************************
 
-            A.RunProperties runProperties1001 = new A.RunProperties() { Language = "en-US", FontSize = fontSize1, Bold = isBold1, Italic = false, Dirty = false };
+            A.RunProperties runProperties1001 = new A.RunProperties() { Language = "en-US", FontSize = fontSize1001, Bold = isBold1001, Italic = false, Dirty = false };
             A.EffectList effectList1001 = new A.EffectList();
-            A.LatinFont latinFont1001 = new A.LatinFont() { Typeface = fontName1 };
+            A.LatinFont latinFont1001 = new A.LatinFont() { Typeface = fontName1001 };
             A.ComplexScriptFont complexScriptFont1001 = new A.ComplexScriptFont() { Typeface = "Segoe UI" };
 
             runProperties1001.Append(effectList1001);
@@ -2959,6 +2961,8 @@ namespace CoreGoals
 
             tableCell4.Append(textBody1001);
             tableCell4.Append(tableCellProperties1001);
+
+            // ********************************* Code for creation of owner cell (Goal - 1 -> Owner) End *********************************
 
 
             A.TableCell tableCell5 = new A.TableCell();
@@ -3331,16 +3335,16 @@ namespace CoreGoals
             A.Run run15 = new A.Run();
 
             // ********************************* Custom Code Start *********************************
-            int fontSize2 = goalsArrayForSlide.ElementAt(1).isMainGoal ? 1300 : 1200;
-            bool isBold2 = goalsArrayForSlide.ElementAt(1).isMainGoal;
-            string fontName2 = goalsArrayForSlide.ElementAt(1).isMainGoal ? "Segoe UI Semibold" : "Segoe UI";
+            int fontSize2001 = goalsArrayForSlide.Count > 1 &&goalsArrayForSlide.ElementAt(1).isMainGoal ? 1300 : 1200;
+            bool isBold2001 = goalsArrayForSlide.Count > 1 &&goalsArrayForSlide.ElementAt(1).isMainGoal;
+            string fontName2001 = goalsArrayForSlide.Count > 1 &&goalsArrayForSlide.ElementAt(1).isMainGoal ? "Segoe UI Semibold" : "Segoe UI";
             // ********************************* Custom Code End *********************************
 
-            A.RunProperties runProperties17 = new A.RunProperties() { Language = "en-US", FontSize = fontSize2, Bold = isBold2, Italic = false, Dirty = false };
+            A.RunProperties runProperties17 = new A.RunProperties() { Language = "en-US", FontSize = fontSize2001, Bold = isBold2001, Italic = false, Dirty = false };
             A.EffectList effectList12 = new A.EffectList();
 
             // ********************************* Custom Code Start *********************************
-            A.LatinFont latinFont33 = new A.LatinFont() { Typeface = fontName2 };
+            A.LatinFont latinFont33 = new A.LatinFont() { Typeface = fontName2001 };
             // ********************************* Custom Code End *********************************
 
             A.ComplexScriptFont complexScriptFont33 = new A.ComplexScriptFont() { Typeface = "Segoe UI" };
@@ -3434,8 +3438,8 @@ namespace CoreGoals
 
             // ********************************* Custom Code Start *********************************
             // Adding the background color according to the goal2 type
-            string goalColor2 = goalsArrayForSlide.Count > 1 && goalsArrayForSlide.ElementAt(1).isMainGoal ? "F5F5F5" : "FFFFFF";
-            A.RgbColorModelHex rgbColorModelHex100 = new A.RgbColorModelHex() { Val = goalColor2 };
+            string goalColor2001 = goalsArrayForSlide.Count > 1 && goalsArrayForSlide.ElementAt(1).isMainGoal ? "F5F5F5" : "FFFFFF";
+            A.RgbColorModelHex rgbColorModelHex100 = new A.RgbColorModelHex() { Val = goalColor2001 };
             // ********************************* Custom Code End *********************************
 
             solidFill45.Append(rgbColorModelHex100);
@@ -3806,13 +3810,24 @@ namespace CoreGoals
             paragraphProperties15.Append(bulletColorText8);
             paragraphProperties15.Append(bulletSizeText8);
             paragraphProperties15.Append(bulletFontText8);
-            paragraphProperties15.Append(pictureBullet2);
+
+            // ********************************* Custom Code Start *********************************
+            if(goalsArrayForSlide.Count() > 2 && !goalsArrayForSlide.ElementAt(2).isMainGoal)
+                paragraphProperties15.Append(pictureBullet2);
+            // ********************************* Custom Code End *********************************
 
             A.Run run16 = new A.Run();
 
-            A.RunProperties runProperties18 = new A.RunProperties() { Language = "en-US", FontSize = 1200, Bold = false, Italic = false, Dirty = false };
+            // ********************************* Custom Code Start *********************************
+            int fontSize3001 = goalsArrayForSlide.Count > 2 &&goalsArrayForSlide.ElementAt(2).isMainGoal ? 1300 : 1200;
+            bool isBold3001 = goalsArrayForSlide.Count > 2 &&goalsArrayForSlide.ElementAt(2).isMainGoal;
+            string fontName3001 = goalsArrayForSlide.Count > 2 &&goalsArrayForSlide.ElementAt(2).isMainGoal ? "Segoe UI Semibold" : "Segoe UI";
+            // ********************************* Custom Code End *********************************
+
+
+            A.RunProperties runProperties18 = new A.RunProperties() { Language = "en-US", FontSize = fontSize3001, Bold = isBold3001, Italic = false, Dirty = false };
             A.EffectList effectList15 = new A.EffectList();
-            A.LatinFont latinFont37 = new A.LatinFont() { Typeface = "Segoe UI" };
+            A.LatinFont latinFont37 = new A.LatinFont() { Typeface = fontName3001};
             A.ComplexScriptFont complexScriptFont37 = new A.ComplexScriptFont() { Typeface = "Segoe UI" };
 
             runProperties18.Append(effectList15);
@@ -3890,9 +3905,11 @@ namespace CoreGoals
             bottomLeftToTopRightBorderLineProperties10.Append(presetDash40);
 
             A.SolidFill solidFill50 = new A.SolidFill();
-            A.SchemeColor schemeColor53 = new A.SchemeColor() { Val = A.SchemeColorValues.Background1 };
 
-            solidFill50.Append(schemeColor53);
+            string goalColor3001 = goalsArrayForSlide.Count > 2 && goalsArrayForSlide.ElementAt(2).isMainGoal ? "F5F5F5" : "FFFFFF";
+            A.RgbColorModelHex rgbColorModelHex3001 = new A.RgbColorModelHex() { Val = goalColor3001 };
+
+            solidFill50.Append(rgbColorModelHex3001);
 
             tableCellProperties10.Append(leftBorderLineProperties10);
             tableCellProperties10.Append(rightBorderLineProperties10);
@@ -4238,12 +4255,20 @@ namespace CoreGoals
             pictureBullet3.Append(blip5);
 
             paragraphProperties18.Append(bulletFontText11);
-            paragraphProperties18.Append(pictureBullet3);
+
+            // ********************************* Custom Code Start *********************************
+            if (goalsArrayForSlide.Count() > 3 && !goalsArrayForSlide.ElementAt(3).isMainGoal)
+                paragraphProperties18.Append(pictureBullet3);
 
             A.Run run17 = new A.Run();
 
-            A.RunProperties runProperties19 = new A.RunProperties() { Language = "en-US", FontSize = 1200, Bold = false, Italic = false, Dirty = false };
-            A.LatinFont latinFont40 = new A.LatinFont() { Typeface = "Segoe UI" };
+            // ********************************* Custom Code Start *********************************
+            int fontSize4001 = goalsArrayForSlide.Count > 3 && goalsArrayForSlide.ElementAt(3).isMainGoal ? 1300 : 1200;
+            bool isBold4001 = goalsArrayForSlide.Count > 3 && goalsArrayForSlide.ElementAt(3).isMainGoal;
+            string fontName4001 = goalsArrayForSlide.Count > 3 && goalsArrayForSlide.ElementAt(3).isMainGoal ? "Segoe UI Semibold" : "Segoe UI";
+
+            A.RunProperties runProperties19 = new A.RunProperties() { Language = "en-US", FontSize = fontSize4001, Bold = isBold4001, Italic = false, Dirty = false };
+            A.LatinFont latinFont40 = new A.LatinFont() { Typeface = fontName4001};
             A.ComplexScriptFont complexScriptFont40 = new A.ComplexScriptFont() { Typeface = "Segoe UI" };
 
             runProperties19.Append(latinFont40);
@@ -4251,7 +4276,7 @@ namespace CoreGoals
             A.Text text19 = new A.Text();
 
             // ********************************* Custom Code Start *********************************
-            if (goalsArrayForSlide.Count() > 3)
+            if (goalsArrayForSlide.Count() > 4)
                 text19.Text = goalsArrayForSlide.ElementAt(3).goalName.ToString() ?? "";
             else
                 text19.Text = "NO DATA";
@@ -4320,9 +4345,13 @@ namespace CoreGoals
             bottomLeftToTopRightBorderLineProperties13.Append(presetDash52);
 
             A.SolidFill solidFill55 = new A.SolidFill();
-            A.SchemeColor schemeColor56 = new A.SchemeColor() { Val = A.SchemeColorValues.Background1 };
 
-            solidFill55.Append(schemeColor56);
+            // ********************************* Custom Code Start *********************************
+            string goalColor4001 = goalsArrayForSlide.Count > 3 && goalsArrayForSlide.ElementAt(3).isMainGoal ? "F5F5F5" : "FFFFFF";
+            A.RgbColorModelHex rgbColorModelHex4001 = new A.RgbColorModelHex() { Val = goalColor4001 };
+            // ********************************* Custom Code End *********************************
+
+            solidFill55.Append(rgbColorModelHex4001);
 
             tableCellProperties13.Append(leftBorderLineProperties13);
             tableCellProperties13.Append(rightBorderLineProperties13);
@@ -4638,123 +4667,177 @@ namespace CoreGoals
 
             A.TableRow tableRow6 = new A.TableRow() { Height = 777502L };
 
+
             A.TableCell tableCell16 = new A.TableCell();
 
-            A.TextBody textBody25 = new A.TextBody();
-            A.BodyProperties bodyProperties26 = new A.BodyProperties();
-            A.ListStyle listStyle26 = new A.ListStyle();
+            A.TextBody textBody2001 = new A.TextBody();
+            A.BodyProperties bodyProperties2001 = new A.BodyProperties();
+            A.ListStyle listStyle2001 = new A.ListStyle();
 
-            A.Paragraph paragraph29 = new A.Paragraph();
+            A.Paragraph paragraph2001 = new A.Paragraph();
 
-            A.Run run18 = new A.Run();
+            A.ParagraphProperties paragraphProperties2001 = new A.ParagraphProperties() { LeftMargin = 171450, RightMargin = 0, Indent = -171450, Alignment = A.TextAlignmentTypeValues.Left, DefaultTabSize = 914400, RightToLeft = false, EastAsianLineBreak = true, FontAlignment = A.TextFontAlignmentValues.Automatic, LatinLineBreak = false, Height = true };
 
-            A.RunProperties runProperties20 = new A.RunProperties() { Language = "en-US", FontSize = 1300, Bold = true, Italic = false, Dirty = false };
-            A.EffectList effectList20 = new A.EffectList();
-            A.LatinFont latinFont43 = new A.LatinFont() { Typeface = "Segoe UI Semibold" };
-            A.ComplexScriptFont complexScriptFont43 = new A.ComplexScriptFont() { Typeface = "Segoe UI Semibold" };
+            A.LineSpacing lineSpacing2001 = new A.LineSpacing();
+            A.SpacingPercent spacingPercent2001 = new A.SpacingPercent() { Val = 100000 };
 
-            runProperties20.Append(effectList20);
-            runProperties20.Append(latinFont43);
-            runProperties20.Append(complexScriptFont43);
-            A.Text text20 = new A.Text();
+            lineSpacing2001.Append(spacingPercent2001);
+
+            A.SpaceBefore spaceBefore2001 = new A.SpaceBefore();
+            A.SpacingPoints spacingPoints2001 = new A.SpacingPoints() { Val = 0 };
+
+            spaceBefore2001.Append(spacingPoints2001);
+
+            A.SpaceAfter spaceAfter2001 = new A.SpaceAfter();
+            A.SpacingPoints spacingPoints2002 = new A.SpacingPoints() { Val = 0 };
+
+            spaceAfter2001.Append(spacingPoints2002);
+            A.BulletColorText bulletColorText2001 = new A.BulletColorText();
+            A.BulletSizeText bulletSizeText2001 = new A.BulletSizeText();
+            A.BulletFontText bulletFontText2001 = new A.BulletFontText();
+
+            A.PictureBullet pictureBullet2001 = new A.PictureBullet();
+
+            A.Blip blip2001 = new A.Blip() { Embed = "rId5" };
+
+            A.BlipExtensionList blipExtensionList2001 = new A.BlipExtensionList();
+
+            A.BlipExtension blipExtension2001 = new A.BlipExtension() { Uri = "{96DAC541-7B7A-43D3-8B79-37D633B846F1}" };
+
+            blipExtensionList2001.Append(blipExtension2001);
+
+            blip2001.Append(blipExtensionList2001);
+
+            pictureBullet2001.Append(blip2001);
+            A.TabStopList tabStopList2001 = new A.TabStopList();
+            A.DefaultRunProperties defaultRunProperties2001 = new A.DefaultRunProperties();
+
+            paragraphProperties2001.Append(lineSpacing2001);
+            paragraphProperties2001.Append(spaceBefore2001);
+            paragraphProperties2001.Append(spaceAfter2001);
+            paragraphProperties2001.Append(bulletColorText2001);
+            paragraphProperties2001.Append(bulletSizeText2001);
+            paragraphProperties2001.Append(bulletFontText2001);
+            if (goalsArrayForSlide.Count > 3 && !goalsArrayForSlide.ElementAt(4).isMainGoal)
+                paragraphProperties2001.Append(pictureBullet2001);
+            paragraphProperties2001.Append(tabStopList2001);
+            paragraphProperties2001.Append(defaultRunProperties2001);
+
+            A.Run run2001 = new A.Run();
+
+            // ********************************* Custom Code Start *********************************
+            int fontSize5001 = goalsArrayForSlide.Count > 4 && goalsArrayForSlide.ElementAt(4).isMainGoal ? 1300 : 1200;
+            bool isBold5001 = goalsArrayForSlide.Count > 4 && goalsArrayForSlide.ElementAt(4).isMainGoal;
+            string fontName5001 = goalsArrayForSlide.Count > 4 && goalsArrayForSlide.ElementAt(4).isMainGoal ? "Segoe UI Semibold" : "Segoe UI";
+            // ********************************* Custom Code End *********************************
+
+            A.RunProperties runProperties2001 = new A.RunProperties() { Language = "en-US", FontSize = fontSize5001, Bold = isBold5001, Italic = false, Dirty = false };
+            A.EffectList effectList2001 = new A.EffectList();
+            A.LatinFont latinFont2001 = new A.LatinFont() { Typeface = fontName5001 };
+            A.ComplexScriptFont complexScriptFont2001 = new A.ComplexScriptFont() { Typeface = "Segoe UI" };
+
+            runProperties2001.Append(effectList2001);
+            runProperties2001.Append(latinFont2001);
+            runProperties2001.Append(complexScriptFont2001);
+            A.Text text2001 = new A.Text();
 
             // ********************************* Custom Code Start *********************************
             if (goalsArrayForSlide.Count() > 4)
-                text20.Text = goalsArrayForSlide.ElementAt(4).goalName.ToString() ?? "";
+                text2001.Text = goalsArrayForSlide.ElementAt(4).goalName.ToString() ?? "";
             else
-                text20.Text = "NO DATA";
+                text2001.Text = "NO DATA";
             // ********************************* Custom Code End *********************************
 
-            run18.Append(runProperties20);
-            run18.Append(text20);
+            run2001.Append(runProperties2001);
+            run2001.Append(text2001);
 
-            A.EndParagraphRunProperties endParagraphRunProperties19 = new A.EndParagraphRunProperties() { Language = "en-US", FontSize = 1300, Bold = true, Italic = false, Dirty = false };
+            A.EndParagraphRunProperties endParagraphRunProperties2001 = new A.EndParagraphRunProperties() { Language = "en-US", FontSize = 1200, Bold = false, Italic = false, Dirty = false };
+            A.LatinFont latinFont2002 = new A.LatinFont() { Typeface = "Segoe UI" };
+            A.ComplexScriptFont complexScriptFont2002 = new A.ComplexScriptFont() { Typeface = "Segoe UI" };
 
-            A.SolidFill solidFill60 = new A.SolidFill();
-            A.SchemeColor schemeColor59 = new A.SchemeColor() { Val = A.SchemeColorValues.Text1 };
+            endParagraphRunProperties2001.Append(latinFont2002);
+            endParagraphRunProperties2001.Append(complexScriptFont2002);
 
-            solidFill60.Append(schemeColor59);
-            A.LatinFont latinFont44 = new A.LatinFont() { Typeface = "Segoe UI Semibold" };
-            A.ComplexScriptFont complexScriptFont44 = new A.ComplexScriptFont() { Typeface = "Segoe UI Semibold" };
+            paragraph2001.Append(paragraphProperties2001);
+            paragraph2001.Append(run2001);
+            paragraph2001.Append(endParagraphRunProperties2001);
 
-            endParagraphRunProperties19.Append(solidFill60);
-            endParagraphRunProperties19.Append(latinFont44);
-            endParagraphRunProperties19.Append(complexScriptFont44);
+            textBody2001.Append(bodyProperties2001);
+            textBody2001.Append(listStyle2001);
+            textBody2001.Append(paragraph2001);
 
-            paragraph29.Append(run18);
-            paragraph29.Append(endParagraphRunProperties19);
+            A.TableCellProperties tableCellProperties2001 = new A.TableCellProperties() { LeftMargin = 162477, RightMargin = 162477, TopMargin = 81239, BottomMargin = 81239, Anchor = A.TextAnchoringTypeValues.Center };
 
-            textBody25.Append(bodyProperties26);
-            textBody25.Append(listStyle26);
-            textBody25.Append(paragraph29);
+            A.LeftBorderLineProperties leftBorderLineProperties2001 = new A.LeftBorderLineProperties() { Width = 12700, CompoundLineType = A.CompoundLineValues.Single };
+            A.NoFill noFill2001 = new A.NoFill();
 
-            A.TableCellProperties tableCellProperties16 = new A.TableCellProperties() { LeftMargin = 162477, RightMargin = 162477, TopMargin = 81239, BottomMargin = 81239, Anchor = A.TextAnchoringTypeValues.Center };
+            leftBorderLineProperties2001.Append(noFill2001);
 
-            A.LeftBorderLineProperties leftBorderLineProperties16 = new A.LeftBorderLineProperties() { Width = 12700, CompoundLineType = A.CompoundLineValues.Single };
-            A.NoFill noFill105 = new A.NoFill();
+            A.RightBorderLineProperties rightBorderLineProperties2001 = new A.RightBorderLineProperties() { Width = 12700, CompoundLineType = A.CompoundLineValues.Single };
+            A.NoFill noFill2002 = new A.NoFill();
 
-            leftBorderLineProperties16.Append(noFill105);
+            rightBorderLineProperties2001.Append(noFill2002);
 
-            A.RightBorderLineProperties rightBorderLineProperties16 = new A.RightBorderLineProperties() { Width = 12700, CompoundLineType = A.CompoundLineValues.Single };
-            A.NoFill noFill106 = new A.NoFill();
+            A.TopBorderLineProperties topBorderLineProperties2001 = new A.TopBorderLineProperties() { Width = 12700, CapType = A.LineCapValues.Flat, CompoundLineType = A.CompoundLineValues.Single, Alignment = A.PenAlignmentValues.Center };
+            A.NoFill noFill2003 = new A.NoFill();
+            A.PresetDash presetDash2001 = new A.PresetDash() { Val = A.PresetLineDashValues.Solid };
+            A.Round round2001 = new A.Round();
+            A.HeadEnd headEnd2001 = new A.HeadEnd() { Type = A.LineEndValues.None, Width = A.LineEndWidthValues.Medium, Length = A.LineEndLengthValues.Medium };
+            A.TailEnd tailEnd2001 = new A.TailEnd() { Type = A.LineEndValues.None, Width = A.LineEndWidthValues.Medium, Length = A.LineEndLengthValues.Medium };
 
-            rightBorderLineProperties16.Append(noFill106);
+            topBorderLineProperties2001
 
-            A.TopBorderLineProperties topBorderLineProperties16 = new A.TopBorderLineProperties() { Width = 6350, CapType = A.LineCapValues.Flat, CompoundLineType = A.CompoundLineValues.Single, Alignment = A.PenAlignmentValues.Center };
-            A.NoFill noFill107 = new A.NoFill();
-            A.PresetDash presetDash61 = new A.PresetDash() { Val = A.PresetLineDashValues.Solid };
-            A.Round round28 = new A.Round();
-            A.HeadEnd headEnd28 = new A.HeadEnd() { Type = A.LineEndValues.None, Width = A.LineEndWidthValues.Medium, Length = A.LineEndLengthValues.Medium };
-            A.TailEnd tailEnd28 = new A.TailEnd() { Type = A.LineEndValues.None, Width = A.LineEndWidthValues.Medium, Length = A.LineEndLengthValues.Medium };
+            .Append(noFill2003);
+            topBorderLineProperties2001.Append(presetDash2001);
+            topBorderLineProperties2001.Append(round2001);
+            topBorderLineProperties2001.Append(headEnd2001);
+            topBorderLineProperties2001.Append(tailEnd2001);
 
-            topBorderLineProperties16.Append(noFill107);
-            topBorderLineProperties16.Append(presetDash61);
-            topBorderLineProperties16.Append(round28);
-            topBorderLineProperties16.Append(headEnd28);
-            topBorderLineProperties16.Append(tailEnd28);
+            A.BottomBorderLineProperties bottomBorderLineProperties2001 = new A.BottomBorderLineProperties() { Width = 12700, CapType = A.LineCapValues.Flat, CompoundLineType = A.CompoundLineValues.Single, Alignment = A.PenAlignmentValues.Center };
+            A.NoFill noFill2004 = new A.NoFill();
+            A.PresetDash presetDash2002 = new A.PresetDash() { Val = A.PresetLineDashValues.Solid };
+            A.Round round2002 = new A.Round();
+            A.HeadEnd headEnd2002 = new A.HeadEnd() { Type = A.LineEndValues.None, Width = A.LineEndWidthValues.Medium, Length = A.LineEndLengthValues.Medium };
+            A.TailEnd tailEnd2002 = new A.TailEnd() { Type = A.LineEndValues.None, Width = A.LineEndWidthValues.Medium, Length = A.LineEndLengthValues.Medium };
 
-            A.BottomBorderLineProperties bottomBorderLineProperties16 = new A.BottomBorderLineProperties() { Width = 12700, CapType = A.LineCapValues.Flat, CompoundLineType = A.CompoundLineValues.Single, Alignment = A.PenAlignmentValues.Center };
-            A.NoFill noFill108 = new A.NoFill();
-            A.PresetDash presetDash62 = new A.PresetDash() { Val = A.PresetLineDashValues.Solid };
-            A.Round round29 = new A.Round();
-            A.HeadEnd headEnd29 = new A.HeadEnd() { Type = A.LineEndValues.None, Width = A.LineEndWidthValues.Medium, Length = A.LineEndLengthValues.Medium };
-            A.TailEnd tailEnd29 = new A.TailEnd() { Type = A.LineEndValues.None, Width = A.LineEndWidthValues.Medium, Length = A.LineEndLengthValues.Medium };
+            bottomBorderLineProperties2001.Append(noFill2004);
+            bottomBorderLineProperties2001.Append(presetDash2002);
+            bottomBorderLineProperties2001.Append(round2002);
+            bottomBorderLineProperties2001.Append(headEnd2002);
+            bottomBorderLineProperties2001.Append(tailEnd2002);
 
-            bottomBorderLineProperties16.Append(noFill108);
-            bottomBorderLineProperties16.Append(presetDash62);
-            bottomBorderLineProperties16.Append(round29);
-            bottomBorderLineProperties16.Append(headEnd29);
-            bottomBorderLineProperties16.Append(tailEnd29);
+            A.TopLeftToBottomRightBorderLineProperties topLeftToBottomRightBorderLineProperties2001 = new A.TopLeftToBottomRightBorderLineProperties() { Width = 12700, CompoundLineType = A.CompoundLineValues.Single };
+            A.NoFill noFill2005 = new A.NoFill();
+            A.PresetDash presetDash2003 = new A.PresetDash() { Val = A.PresetLineDashValues.Solid };
 
-            A.TopLeftToBottomRightBorderLineProperties topLeftToBottomRightBorderLineProperties16 = new A.TopLeftToBottomRightBorderLineProperties() { Width = 12700, CompoundLineType = A.CompoundLineValues.Single };
-            A.NoFill noFill109 = new A.NoFill();
-            A.PresetDash presetDash63 = new A.PresetDash() { Val = A.PresetLineDashValues.Solid };
+            topLeftToBottomRightBorderLineProperties2001.Append(noFill2005);
+            topLeftToBottomRightBorderLineProperties2001.Append(presetDash2003);
 
-            topLeftToBottomRightBorderLineProperties16.Append(noFill109);
-            topLeftToBottomRightBorderLineProperties16.Append(presetDash63);
+            A.BottomLeftToTopRightBorderLineProperties bottomLeftToTopRightBorderLineProperties2001 = new A.BottomLeftToTopRightBorderLineProperties() { Width = 12700, CompoundLineType = A.CompoundLineValues.Single };
+            A.NoFill noFill2006 = new A.NoFill();
+            A.PresetDash presetDash2004 = new A.PresetDash() { Val = A.PresetLineDashValues.Solid };
 
-            A.BottomLeftToTopRightBorderLineProperties bottomLeftToTopRightBorderLineProperties16 = new A.BottomLeftToTopRightBorderLineProperties() { Width = 12700, CompoundLineType = A.CompoundLineValues.Single };
-            A.NoFill noFill110 = new A.NoFill();
-            A.PresetDash presetDash64 = new A.PresetDash() { Val = A.PresetLineDashValues.Solid };
+            bottomLeftToTopRightBorderLineProperties2001.Append(noFill2006);
+            bottomLeftToTopRightBorderLineProperties2001.Append(presetDash2004);
 
-            bottomLeftToTopRightBorderLineProperties16.Append(noFill110);
-            bottomLeftToTopRightBorderLineProperties16.Append(presetDash64);
+            A.SolidFill solidFill2001 = new A.SolidFill();
+            // ********************************* Custom Code Start *********************************
+            string colorCode5001 = goalsArrayForSlide.Count > 3 && goalsArrayForSlide.ElementAt(4).isMainGoal ? "F5F5F5" : "FFFFFF";
+            // ********************************* Custom Code End *********************************
+            A.RgbColorModelHex rgbColorModelHex5001 = new A.RgbColorModelHex() { Val = colorCode5001 };
 
-            A.SolidFill solidFill61 = new A.SolidFill();
-            A.RgbColorModelHex rgbColorModelHex21 = new A.RgbColorModelHex() { Val = "F5F5F5" };
+            solidFill2001.Append(rgbColorModelHex5001);
 
-            solidFill61.Append(rgbColorModelHex21);
+            tableCellProperties2001.Append(leftBorderLineProperties2001);
+            tableCellProperties2001.Append(rightBorderLineProperties2001);
+            tableCellProperties2001.Append(topBorderLineProperties2001);
+            tableCellProperties2001.Append(bottomBorderLineProperties2001);
+            tableCellProperties2001.Append(topLeftToBottomRightBorderLineProperties2001);
+            tableCellProperties2001.Append(bottomLeftToTopRightBorderLineProperties2001);
+            tableCellProperties2001.Append(solidFill2001);
 
-            tableCellProperties16.Append(leftBorderLineProperties16);
-            tableCellProperties16.Append(rightBorderLineProperties16);
-            tableCellProperties16.Append(topBorderLineProperties16);
-            tableCellProperties16.Append(bottomBorderLineProperties16);
-            tableCellProperties16.Append(topLeftToBottomRightBorderLineProperties16);
-            tableCellProperties16.Append(bottomLeftToTopRightBorderLineProperties16);
-            tableCellProperties16.Append(solidFill61);
-
-            tableCell16.Append(textBody25);
-            tableCell16.Append(tableCellProperties16);
+            tableCell16.Append(textBody2001);
+            tableCell16.Append(tableCellProperties2001);
 
             A.TableCell tableCell17 = new A.TableCell();
 
@@ -5089,13 +5172,23 @@ namespace CoreGoals
             pictureBullet4.Append(blip6);
 
             paragraphProperties23.Append(bulletFontText16);
-            paragraphProperties23.Append(pictureBullet4);
+
+            // ********************************* Custom Code Start *********************************
+            if (goalsArrayForSlide.Count > 5 && !goalsArrayForSlide.ElementAt(5).isMainGoal)
+                paragraphProperties23.Append(pictureBullet4);
+            // ********************************* Custom Code End *********************************
 
             A.Run run19 = new A.Run();
 
-            A.RunProperties runProperties21 = new A.RunProperties() { Language = "en-US", FontSize = 1200, Bold = false, Italic = false };
+            // ********************************* Custom Code Start *********************************
+            int fontSize6001 = goalsArrayForSlide.Count > 5 && goalsArrayForSlide.ElementAt(5).isMainGoal ? 1300 : 1200;
+            bool isBold6001 = goalsArrayForSlide.Count > 5 && goalsArrayForSlide.ElementAt(5).isMainGoal;
+            string fontName6001 = goalsArrayForSlide.Count > 5 && goalsArrayForSlide.ElementAt(5).isMainGoal ? "Segoe UI Semibold" : "Segoe UI";
+            // ********************************* Custom Code End *********************************
+
+            A.RunProperties runProperties21 = new A.RunProperties() { Language = "en-US", FontSize = fontSize6001, Bold = isBold6001, Italic = false };
             A.EffectList effectList23 = new A.EffectList();
-            A.LatinFont latinFont47 = new A.LatinFont() { Typeface = "Segoe UI" };
+            A.LatinFont latinFont47 = new A.LatinFont() { Typeface = fontName6001 };
             A.ComplexScriptFont complexScriptFont47 = new A.ComplexScriptFont() { Typeface = "Segoe UI" };
 
             runProperties21.Append(effectList23);
@@ -5181,9 +5274,13 @@ namespace CoreGoals
             bottomLeftToTopRightBorderLineProperties19.Append(presetDash76);
 
             A.SolidFill solidFill66 = new A.SolidFill();
-            A.SchemeColor schemeColor60 = new A.SchemeColor() { Val = A.SchemeColorValues.Background1 };
 
-            solidFill66.Append(schemeColor60);
+            // ********************************* Custom Code Start *********************************
+            string colorCode6001 = goalsArrayForSlide.Count > 5 && goalsArrayForSlide.ElementAt(5).isMainGoal ? "F5F5F5" : "FFFFFF";
+            A.RgbColorModelHex rgbColorModelHex6001 = new A.RgbColorModelHex() { Val = colorCode6001 };
+            // ********************************* Custom Code End *********************************
+
+            solidFill66.Append(rgbColorModelHex6001);
 
             tableCellProperties19.Append(leftBorderLineProperties19);
             tableCellProperties19.Append(rightBorderLineProperties19);
