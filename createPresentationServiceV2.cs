@@ -18,7 +18,7 @@ namespace CoreGoals
         {
             List<Goal.GoalDetail> goalsArray = new List<Goal.GoalDetail>();
 
-            for (int i = 1; i <= 3601; i++)
+            for (int i = 1; i <= 10000; i++)
             {
                 Random rnd = new Random();
 
@@ -125,34 +125,56 @@ namespace CoreGoals
             // ****************************** Presentation level settings End *************************************
 
             // ****************************** Slide Creation Start *************************************
+            ImagePart[] slideImageParts = new ImagePart[6];
 
+            // create the first slide
+            List<Goal.GoalDetail> goalsArrayForSlide1 = goalsArray.Take(6).ToList();
+            SlidePart slidePart1 = presentationPart1.AddNewPart<SlidePart>("rId20");
+            GenerateSlidePartContent(slidePart1, goalsArrayForSlide1);
+            slidePart1.AddPart(slideLayoutPart1, "rId1");
 
-            for (int i = 0; i < totalSlides; i++)
+            ImagePart imagePart1 = slidePart1.AddNewPart<ImagePart>("image/png", "rId3");
+            GenerateImagePart1Content(imagePart1);
+
+            ImagePart imagePart2 = slidePart1.AddNewPart<ImagePart>("image/svg+xml", "rId7");
+            GenerateImagePart2Content(imagePart2);
+
+            ImagePart imagePart3 = slidePart1.AddNewPart<ImagePart>("image/png", "rId2");
+            GenerateImagePart3Content(imagePart3);
+
+            ImagePart imagePart4 = slidePart1.AddNewPart<ImagePart>("image/png", "rId6");
+            GenerateImagePart4Content(imagePart4);
+
+            ImagePart imagePart5 = slidePart1.AddNewPart<ImagePart>("image/svg+xml", "rId5");
+            GenerateImagePart5Content(imagePart5);
+
+            ImagePart imagePart6 = slidePart1.AddNewPart<ImagePart>("image/png", "rId4");
+            GenerateImagePart6Content(imagePart6);
+
+            // add image parts to the array
+            slideImageParts[0] = imagePart1;
+            slideImageParts[1] = imagePart2;
+            slideImageParts[2] = imagePart3;
+            slideImageParts[3] = imagePart4;
+            slideImageParts[4] = imagePart5;
+            slideImageParts[5] = imagePart6;
+
+            // create the rest of the slides
+            for (int i = 1; i < totalSlides; i++)
             {
                 List<Goal.GoalDetail> goalsArrayForSlide = goalsArray.Skip(i * 6).Take(6).ToList();
 
-                SlidePart slidePart1 = presentationPart1.AddNewPart<SlidePart>("rId" + (i + 20).ToString());
-                GenerateSlidePartContent(slidePart1, goalsArrayForSlide);
+                SlidePart slidePart = presentationPart1.AddNewPart<SlidePart>("rId" + (i + 20).ToString());
+                GenerateSlidePartContent(slidePart, goalsArrayForSlide);
 
-                slidePart1.AddPart(slideLayoutPart1, "rId1");
+                slidePart.AddPart(slideLayoutPart1, "rId1");
 
-                ImagePart imagePart1 = slidePart1.AddNewPart<ImagePart>("image/png", "rId3");
-                GenerateImagePart1Content(imagePart1);
-
-                ImagePart imagePart2 = slidePart1.AddNewPart<ImagePart>("image/svg+xml", "rId7");
-                GenerateImagePart2Content(imagePart2);
-
-                // ImagePart imagePart3 = slidePart1.AddNewPart<ImagePart>("image/png", "rId2");
-                // GenerateImagePart3Content(imagePart3);
-
-                ImagePart imagePart4 = slidePart1.AddNewPart<ImagePart>("image/png", "rId6");
-                GenerateImagePart4Content(imagePart4);
-
-                ImagePart imagePart5 = slidePart1.AddNewPart<ImagePart>("image/svg+xml", "rId5");
-                GenerateImagePart5Content(imagePart5);
-
-                ImagePart imagePart6 = slidePart1.AddNewPart<ImagePart>("image/png", "rId4");
-                GenerateImagePart6Content(imagePart6);
+                slidePart.AddPart(slideImageParts[0], "rId3");
+                slidePart.AddPart(slideImageParts[1], "rId7");
+                slidePart.AddPart(slideImageParts[2], "rId2");
+                slidePart.AddPart(slideImageParts[3], "rId6");
+                slidePart.AddPart(slideImageParts[4], "rId5");
+                slidePart.AddPart(slideImageParts[5], "rId4");
             }
 
             // ****************************** Slide Creation End *************************************

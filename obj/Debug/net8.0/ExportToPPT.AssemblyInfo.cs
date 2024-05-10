@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExportToPPT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d55d84196f487679f8bea9cc7d978016ee4d6bb9")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExportToPPT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExportToPPT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
